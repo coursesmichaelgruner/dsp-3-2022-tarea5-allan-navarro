@@ -84,13 +84,5 @@ res = res.astype(np.int16)
 
 wavfile.write("result.wav",fs,res)
 
-fft = np.fft.fft(res)
-
-freq = np.fft.fftfreq(res.shape[-1])*fs
-
-plt.figure('filt')
-plt.plot(freq, np.abs(fft))
-plt.xlabel("Frecuencia (Hz)")
-plt.ylabel("Mag. DFT")
 
 plt.show()
