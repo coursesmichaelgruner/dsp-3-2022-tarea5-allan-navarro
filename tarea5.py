@@ -71,10 +71,14 @@ def get_qs(f0):
     return b,a
 
 
+plt.figure('notch')
+
 res=data
 for h in np.arange(1,10)*60:
     coeffs=get_qs(h)
     res=lfilter(coeffs[0],coeffs[1],res)
+    w,a = scipy.signal.freqz(coeffs[0],coeffs[1],worN=1024,fs=fs)
+    plt.plot(w,np.abs(a))
 
 res = res.astype(np.int16)
 
